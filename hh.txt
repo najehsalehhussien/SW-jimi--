@@ -1,0 +1,59 @@
+create DATABASE dar_albaraem;
+ use dar_albaraem;
+ CREATE TABLE employeestb ( name varchar(50) NOT null ,  
+                            age int NOT null ,   
+                             pnum varchar(11) PRIMARY key ,
+                             syear int NOT null , 
+                             salary varchar(20) NOT null );
+ use dar_albaraem;
+ CREATE TABLE beneficiariestb (
+                               bname varchar(50) NOT null ,
+                               age int NOT null ,
+                               rdate date NOT null ,
+                               bcase varchar(50) NOT null ,
+                               Guardian varchar(50) NOT null,
+                               GNo varchar(11) NOT null) ;
+ use dar_albaraem;
+ CREATE TABLE store(itemid int PRIMARY KEY AUTO_INCREMENT , 
+                    itemn varchar(20) NOT null ,
+                    itemamm int NOT null);
+ INSERT INTO employeestb(name,age,pnum,syear,salary) values
+                        ('susan',50,'07833456781',30,'500,000');
+ INSERT INTO employeestb VALUES 
+                 ('manal',58,'07809654378',38,'700,000')
+                 ('zahraa',30,'07708967291',14,'350,000') 
+ insert into beneficiariestb (bname,age,rdate,bcase,Guardian,GNo) VALUES
+
+
+('majeed',17,'2007-3-3','orphan mother','his uncle','07708912635')   
+('abbas',11,'2009-2-10','orphan father','his aunt','07708474735')  
+INSERT INTO beneficiariestb VALUES 
+('ali',9,'2011-6-2','orphan parents','his grand mother','07708351735') 
+ insert into store (itemid,itemn,itemamm) values
+                   (null,'rice',30)
+                   (null,'flour',50)
+                   (null,'sugar',10) 
+           
+set @name='ali';
+set @age=27;
+set @pnum='07809543266';
+set @syear=10;
+set @salary='250,000';
+insert into employeestb (name,age,pnum,syear,salary) VALUES 
+                       (@name,@age,@pnum,@syear,@salary);
+SELECT * from  employeestb;    
+UPDATE employeestb set salary=salary+100 where syear<20;
+set @name='sosan';
+set @pnum='07833456781';
+UPDATE employeestb set pnum=@pnum WHERE name=@name;
+set @GNo='0780671871';
+set @bname='majeed';
+update beneficiariestb set GNo=@GNo WHERE bname=@bname;
+set @itemn='oil';
+set @itemamm='50';
+
+insert into store(itemn,itemamm) VALUES
+                 (@itemn,@itemamm);
+                 SELECT *FROM beneficiariestb;
+set @itemn='sugar';
+update store set itemamm=40 WHERE itemn=@itemn;
